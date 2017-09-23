@@ -1,0 +1,172 @@
+﻿<section>
+    <div class="col-lg-6">
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>Select Title</label>
+            </div>
+            <div class="col-lg-6">
+                <select class="form-control" data-ng-model="Model.Customer.CustomerTitle" required="" name="title">
+                    <option value="">-----Please select-----</option>
+                    <option>Mr.</option>
+                    <option>Mrs.</option>
+                </select>
+                <div class="ui pointing red basic label" data-ng-show="customerform.title.$error.required && customerform.title.$dirty">
+                    Please select title
+                </div>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>First Name</label>
+            </div>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" placeholder="Enter customer firstname" name="firstname" required="" data-ng-model="Model.Customer.CustomerFirstName">
+                <div class="ui pointing red basic label" data-ng-show="customerform.firstname.$error.required && customerform.firstname.$dirty">
+                    Please enter first name
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 100 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>Last Name</label>
+            </div>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" placeholder="Enter customer lastname" name="lastname" required="" data-ng-model="Model.Customer.CustomerLastName">
+                <div class="ui pointing red basic label" data-ng-show="customerform.lastname.$error.required && customerform.lastname.$dirty">
+                    Please enter last name
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 100 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>Address</label>
+            </div>
+            <div class="col-lg-6">
+                <textarea class="form-control" placeholder="Enter customer address" name="address" required="" data-ng-model="Model.Customer.CustomerAddress"></textarea>
+                <div class="ui pointing red basic label" data-ng-show="customerform.address.$error.required && customerform.address.$dirty">
+                    Please enter address
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 500 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>Place</label>
+            </div>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" placeholder="Enter customer place" name="place" required="" data-ng-model="Model.Customer.CustomerPlace">
+                <div class="ui pointing red basic label" data-ng-show="customerform.place.$error.required && customerform.place.$dirty">
+                    Please enter place
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 100 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>Vehicle Number</label>
+            </div>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" placeholder="Enter customer vehicle number" name="tinnumber" required="" data-ng-model="Model.Customer.CustomerVehicleNum">
+                <div class="ui pointing red basic label" data-ng-show="customerform.tinnumber.$error.required && customerform.tinnumber.$dirty">
+                    Please enter vehicle number
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 50 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>Vehicle Type</label>
+            </div>
+            <div class="col-lg-6">
+                <select class="form-control" required="" name="vehicletype" data-ng-model="Model.Customer.CustomerVehicleType">
+                    <option value="">----Please select------</option>
+                    <option value="2">Two Wheeler</option>
+                    <option value="4">Four Wheeler</option>
+                </select>
+                <div class="ui pointing red basic label" data-ng-show="customerform.vehicletype.$error.required && customerform.vehicletype.$dirty">
+                    Please select vehicle type
+                </div>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>Mobile Number</label>
+            </div>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" placeholder="Enter customer mobile number" name="mobilenumber" required=""
+                       data-ng-pattern="ValidationMessage.MobileNumberRegEx" data-ng-model="Model.Customer.CustomerMobile">
+                <div class="ui pointing red basic label" data-ng-show="customerform.mobilenumber.$error.required && customerform.mobilenumber.$dirty">
+                    Please enter mobile number
+                </div>
+
+                <div class="ui pointing red basic label" data-ng-show="customerform.mobilenumber.$error.pattern && customerform.mobilenumber.$dirty">
+                    Please enter 10 or 12 digit mobile number
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 12 numbers</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-3">
+                <label>Email Id</label>
+            </div>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" placeholder="Enter customer email id" name="emailid" required="" data-ng-model="Model.Customer.CustomerEmailId">
+                <div class="ui pointing red basic label" data-ng-show="customerform.emailid.$error.required && customerform.emailid.$dirty">
+                    Please enter email id
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 100 characters</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="row" data-ng-if="Model.CurrentTemplateView == 'updatecustomer'">
+            <div class="col-lg-6">
+                <img data-ng-src="{{Model.Customer.CustomerImageUrl}}" />
+            </div>
+        </div>
+        <div class="row" data-ng-if="Model.CurrentTemplateView == 'newcustomer'">
+            <div class="col-lg-6">
+                <div class="camera">
+                    <video id="video">Video stream not available.</video>
+                </div>
+            </div>
+            <div class="col-lg-6">
+
+                <button class="form-control btn btn-primary" data-ng-click="ImageService.StartCamera()" data-ng-show="!ImageService.IsCameraStarted">Start Camera</button>
+                <button class="form-control btn btn-primary" id="startbutton" data-ng-show="ImageService.IsCameraStarted">Take Photo</button>
+                <button class="form-control btn btn-primary" data-ng-click="ImageService.StopCamera()" data-ng-show="ImageService.IsCameraStarted">Stop Camera</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="col-lg-6">
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,20 @@
+﻿<div id="customerview" class="ui inverted relaxed divided list ">
+    <div class="item pointer-cursor customer-report-trans" data-ng-class="{true:'customer-report-active-trans',false:''}[report.Details.IsActive]"
+         data-ng-repeat="report in Model.Reports" data-ng-click="Model.LoadTransaction(report,'CustomerId')">
+        <img data-ng-if="!report.Details.IsGuestUser" class="ui avatar image" data-ng-src="{{report.Details.CustomerImageUrl}}">
+      
+        <div class="content">
+            <div class="header">
+                <div class="ui yellow   label font-size-15" data-ng-if="report.Details.IsGuestUser">
+                    <span>Guest</span>
+                </div>
+                <span data-ng-if="!report.Details.IsGuestUser">{{report.Details.CustomerId}},</span>
+                <span> {{report.Details.CustomerTitle}} {{report.Details.CustomerFirstName}}, {{report.Details.CustomerLastName}}</span>
+                <div class="ui red  circular label" >
+                    <span data-ng-bind="report.Transactions.length"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

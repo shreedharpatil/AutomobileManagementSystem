@@ -1,0 +1,136 @@
+﻿<div class="container">
+    <a href="#/home"><i class="fa fa-backward font-size-30"></i><span class="font-size-20">Back to Home</span></a>
+    <br />
+    <div class="row">
+        <div class="col-md-4"><label class="white orange-color font-size-20"><i class="fa fa-newspaper-o font-size-30"></i>Manage Reports</label></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 top-margin-10">
+            <table class="ui inverted table">
+                <tbody>
+                    <tr><td class="orange-color font-size-15">Criteria Details</td></tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-1"><span>From</span></div>
+                                <div class="col-md-2">
+                                    <input type="date" class="form-control" data-ng-model="Model.Report.FromDate" />
+                                </div>
+                                <div class="col-md-1"><span>To</span></div>
+                                <div class="col-md-2">
+                                    <input type="date" class="form-control" data-ng-model="Model.Report.ToDate" />
+                                </div>
+                                <div class="col-md-1"><span>Type</span></div>
+                                <div class="col-md-2">
+                                    <select class="form-control" data-ng-model="Model.Report.Type">
+                                        <option>Dealer</option>
+                                        <option>Customer</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="float-right form-control btn btn-primary" data-ng-click="Model.LoadReports()"><i class="fa fa-search-plus font-size-20"></i>  Search</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12 top-margin-10">
+            <table class="ui inverted table">
+                <tbody>
+                    <tr><td class="orange-color font-size-15" colspan="4">Transaction Summary</td></tr>
+                    <tr class="light-blue">
+                        <th>Number Of transactions</th>
+                        <th>Total Amount</th>
+                        <th>Paid Amount</th>
+                        <th>Due Amount</th>
+                    </tr>
+                    <tr>
+                        <td><span data-ng-bind="Model.ReportSummary.NumberOfTransactions"></span></td>
+                        <td><span data-ng-bind="Model.ReportSummary.TotalAmount| currency : '₹'"></span></td>
+                        <td><span data-ng-bind="Model.ReportSummary.PaidAmount| currency : '₹'"></span></td>
+                        <td><span data-ng-bind="Model.ReportSummary.DueAmount| currency : '₹'"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 top-margin-10">
+            <table class="ui inverted table">
+                <tbody>
+                    <tr>
+                        <td class="orange-color font-size-15">Transaction History</td>
+                        <td data-ng-show="Model.Reports.length > 0 && Model.Report.Type.toUpperCase() == 'Customer'.toUpperCase()" class="float-right">
+                            <div data-ng-if="Model.Report.Type == 'Customer'">
+                                <select class="form-control" data-ng-model="Model.CustomerReportPdfFilter" data-ng-change="Model.FilterCustomerReports()">
+                                    <option>All</option>
+                                    <option>Customer</option>
+                                    <option>Guest</option>
+                                </select>
+                            </div>
+                            <a href="/api/CustomerReportGeneration?FromDate={{Model.Report.FromDate.toDateString()}}&ToDate={{Model.Report.ToDate.toDateString()}}&PdfFilter={{Model.CustomerReportPdfFilter}}"><i class="fa fa-download"></i>Download report</a>
+                        </td>
+                        <td data-ng-show="Model.Reports.length > 0 && Model.Report.Type.toUpperCase() == 'Dealer'.toUpperCase()" class="float-right">
+                            <a href="/api/DealerReportGeneration?FromDate={{Model.Report.FromDate.toDateString()}}&ToDate={{Model.Report.ToDate.toDateString()}}"><i class="fa fa-download"></i>Download report</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row top-margin-10" data-ng-show="Model.Reports.length > 0">
+        <div class="col-md-2">
+            <div class="ui pointing below label">
+                Click the user below.
+            </div>
+            <label></label>
+        </div>
+        <div class="col-md-2" data-ng-if="Model.Report.Type == 'Customer'" style="margin-left:-60px;">
+            <select class="form-control" data-ng-model="Model.CustomerReportFilter" data-ng-change="Model.FilterCustomerReports()">
+                <option>All</option>
+                <option>Customer</option>
+                <option>Guest</option>
+            </select>
+        </div>
+        <div class=" col-md-2" data-ng-class="{true:'col-md-offset-6',false:'col-md-offset-8'}[Model.Report.Type == 'Customer']">
+            <input type="text" class="float-right form-control" placeholder="Any free text" data-ng-model="Model.FilterText" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 top-margin-10">
+            <div class="ui inverted segment">
+
+                <div data-ng-include="Model.ReportViewTemplate"></div>
+            </div>
+        </div>
+        <div class="col-md-9 top-margin-10">
+            <div class="ui special cards  inverted" data-ng-include="Model.ReportDetailsViewTemplate">
+
+
+            </div>
+        </div>
+        <div class="item" data-ng-show="Model.ShowLoader">
+            <span class="ui segment" style="position: inherit !important">
+                <span class="ui active dimmer">
+                    <span class="ui small text loader">Loading</span>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('.ui.accordion').accordion();
+        $('.ui.dropdown').dropdown();
+    });
+</script>

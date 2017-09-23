@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Bootstrap Core CSS -->
+    <!--<link href="../Content/bootstrap.css" rel="stylesheet" />-->
+    <link href="../TemplateTheme/css/bootstrap.css" rel="stylesheet">
+
+    
+    <!-- Font Awesome CSS -->
+    <link href="../TemplateTheme/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="../Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="../Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--<link href="../Content/font-awesome/css/style.css" rel="stylesheet" />-->
+
+    <link href="../TemplateTheme/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../TemplateTheme/css/style.css" rel="stylesheet">
+    <link href="../Content/semantic.min.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <!--<link href="../Content/style.css" rel="stylesheet" />-->
+    <link href="../TemplateTheme/css/css" rel="stylesheet" type="text/css">
+
+    <link href="../Content/customstyles.css" rel="stylesheet" />    
+
+    <title></title>
+</head>
+<body data-ng-app="ABS" data-ng-controller="HomeController">
+   
+   <div data-ng-include="Model.HeaderTemplate"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-10 col-md-2">
+                <button type="button" class="float-right  btn btn-primary" data-ng-click="Model.Backup()">
+                    Take Backup
+                </button>
+            </div>
+        </div>
+    </div>
+    <div data-ng-view=""></div>
+
+    <div data-ng-include="Model.FooterTemplate"></div>
+    <div class="item" data-ng-show="Model.ShowLoader">
+        <span class="ui segment" style="position: inherit !important">
+            <span class="ui active dimmer">
+                <span class="ui large text loader">Please wait.</span>
+            </span>
+        </span>
+    </div>
+
+</body>
+
+</html>
+
+<!-- Template js -->
+<script src="../Scripts/jquery-2.1.4.min.js"></script>
+<!--<script src="../TemplateTheme/js/jquery-2.1.1.min.js"></script>-->
+<!--<script src="../TemplateTheme/js/bootstrap.min.js"></script>-->
+<script src="../TemplateTheme/js/jquery.appear.js"></script>
+<script src="../TemplateTheme/js/contact_me.js"></script>
+<script src="../TemplateTheme/js/jqBootstrapValidation.js"></script>
+<script src="../TemplateTheme/js/modernizr.custom.js"></script>
+<script src="../TemplateTheme/js/script.js"></script>
+
+<script src="../Scripts/angular.min.js"></script>
+<script src="../Scripts/angular-route.min.js"></script>
+<script src="../Scripts/bootstrap-datetimepicker.min.js"></script>
+<script src="../Scripts/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="../Scripts/dialogs.min.js"></script>
+<script src="../Scripts/semantic.js"></script>
+<script src="../Scripts/underscore.js"></script>
+<script src="../Content/semantic/components/shape.min.js"></script>
+<link href="../Content/semantic/components/shape.min.css" rel="stylesheet" />
+<script src="../Login/js/AutoBillingModule.js"></script>
+<script src="Common/WarningMessage.js"></script>
+<script src="HomeController.js"></script>
+<script src="Dealer/js/DealerService.js"></script>
+<script src="Dealer/js/DealerController.js"></script>
+
+<script src="Dealer/js/NewDealerService.js"></script>
+<script src="Dealer/js/NewDealerController.js"></script>
+
+<script src="Dealer/js/UpdateDealerService .js"></script>
+<script src="Dealer/js/UpdateDealerController.js"></script>
+<script src="Customer/js/CustomerService.js"></script>
+<script src="Customer/js/CustomerController.js"></script>
+<script src="Customer/js/NewCustomerService.js"></script>
+<script src="Customer/js/NewCustomerController.js"></script>
+<script src="Customer/js/UpdateCustomerService .js"></script>
+<script src="Customer/js/UpdateCustomerController.js"></script>
+<script src="Customer/js/CaptureImageService.js"></script>
+<script src="BuyStock/js/CaptureImageController.js"></script>
+<script src="Stock/js/StockService.js"></script>
+<script src="Stock/js/StockController.js"></script>
+<script src="Stock/js/NewStockService.js"></script>
+<script src="Stock/js/NewStockController.js"></script>
+<script src="Stock/js/UpdateStockService.js"></script>
+<script src="Stock/js/UpdateStockController.js"></script>
+<script src="Stock/js/NewStockItemService.js"></script>
+<script src="Stock/js/NewStockItemController.js"></script>
+<script src="Common/ValidationMessage.js"></script>
+<script src="Stock/js/UpdateStockItemController.js"></script>
+<script src="Stock/js/UpdateStockItemService.js"></script>
+<script src="BuyStock/js/BuyStockController.js"></script>
+<script src="BuyStock/js/BuyStockService.js"></script>
+<link href="../Content/semantic/components/dropdown.min.css" rel="stylesheet" />
+<script src="../Content/semantic/components/dropdown.min.js"></script>
+<link href="../Content/semantic/components/accordion.min.css" rel="stylesheet" />
+<script src="../Content/semantic/components/accordion.min.js"></script>
+<script src="SellStock/js/SellStockService.js"></script>
+<script src="SellStock/js/SellStockController.js"></script>
+<script src="Dealer/js/DealerProfileService.js"></script>
+<script src="Dealer/js/DealerProfileController.js"></script>
+<script src="Customer/js/CustomerProfileService.js"></script>
+<script src="Customer/js/CustomerProfileController.js"></script>
+<script src="Reports/js/ReportsService.js"></script>
+<script src="Reports/js/ReportsController.js"></script>
+<script src="DailySheet/js/DailySheetService.js"></script>
+<script src="DailySheet/js/SaveDailySheetService.js"></script>
+<script src="DailySheet/js/ViewDailySheetService.js"></script>
+<script src="../Scripts/FileSaver.js"></script>
+<script src="DailySheet/js/SaveDailySheetController.js"></script>
+<script src="DailySheet/js/ViewDailySheetController.js"></script>
+<script src="DailySheet/js/ViewDailySheetController.js"></script>
+
+<script src="DailySheet/js/DailySheetController.js"></script>
+<script src="SellStock/js/NewGuestController.js"></script>
+

@@ -1,0 +1,108 @@
+﻿<section>
+    <div class="modal-content" style="height:500px">
+        <div class="popup_header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close()" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Capture Guest Details</h4>
+        </div>
+        <div class="modal-body  body-custom" style="color: black !important">
+            <form class="ui form margin-top-35" name="newguestform">
+                <div class="row margin-botton-15">
+                    <div class="col-lg-3">
+                        <label>Select Title</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <select class="form-control" data-ng-model="Customer.CustomerTitle" required="" name="title">
+                            <option value="">-----Please select-----</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                        </select>
+                        <div class="ui pointing red basic label" data-ng-show="newguestform.title.$error.required && newguestform.title.$dirty">
+                            Please select title
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margin-botton-15">
+                    <div class="col-lg-3">
+                        <label>First Name</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" placeholder="Enter customer firstname" name="firstname" required="" data-ng-model="Customer.CustomerFirstName">
+                        <div class="ui pointing red basic label" data-ng-show="newguestform.firstname.$error.required && newguestform.firstname.$dirty">
+                            Please enter first name
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="ui teal tag label">Max. 100 characters</a>
+                    </div>
+                </div>
+
+                <div class="row margin-botton-15">
+                    <div class="col-lg-3">
+                        <label>Last Name</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" placeholder="Enter customer lastname" name="lastname" required="" data-ng-model="Customer.CustomerLastName">
+                        <div class="ui pointing red basic label" data-ng-show="newguestform.lastname.$error.required && newguestform.lastname.$dirty">
+                            Please enter last name
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="ui teal tag label">Max. 100 characters</a>
+                    </div>
+                </div>
+
+                <div class="row margin-botton-15">
+                    <div class="col-lg-3">
+                        <label>Address</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <textarea class="form-control" placeholder="Enter customer address" name="address" required="" data-ng-model="Customer.CustomerAddress"></textarea>
+                        <div class="ui pointing red basic label" data-ng-show="newguestform.address.$error.required && newguestform.address.$dirty">
+                            Please enter address
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="ui teal tag label">Max. 500 characters</a>
+                    </div>
+                </div>
+                <div class="row margin-botton-15">
+                    <div class="col-lg-3">
+                        <label>Mobile Number</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" placeholder="Enter customer mobile number" name="mobilenumber" required=""
+                               data-ng-pattern="ValidationMessage.MobileNumberRegEx" data-ng-model="Customer.CustomerMobile">
+                        <div class="ui pointing red basic label" data-ng-show="newguestform.mobilenumber.$error.required && newguestform.mobilenumber.$dirty">
+                            Please enter mobile number
+                        </div>
+
+                        <div class="ui pointing red basic label" data-ng-show="newguestform.mobilenumber.$error.pattern && newguestform.mobilenumber.$dirty">
+                            Please enter 10 or 12 digit mobile number
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="ui teal tag label">Max. 12 numbers</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-lg-8"></div>
+                <div class="col-lg-2">
+                    <button type="submit" class="float-right form-control btn btn-default" data-ng-click="Model.Close(false)">Close</button>
+                </div>
+                <div class="col-lg-2">
+
+                    <button type="submit" class="float-right form-control btn btn-primary" data-ng-click="Model.Close(true)"
+                            data-ng-if="newguestform.$valid">
+                        Save
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

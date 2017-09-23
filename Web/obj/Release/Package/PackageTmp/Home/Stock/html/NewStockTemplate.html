@@ -1,0 +1,62 @@
+﻿<section>
+    <div class="modal-content">
+        <div class="popup_header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="Model.Close({QueryData : false})" aria-hidden="true">&times;</button>
+            <h4 class="modal-title bold">Add New Stock</h4>
+        </div>
+        <div class="modal-body  body-custom" style="color: black !important">
+            <form name="newstockform">
+                <div class="row margin-botton-15">
+                    <div class="col-lg-4">
+                        <label>Stock Id</label>
+                    </div>
+                    <div class="col-lg-5" >
+                        <input type="text" class="form-control" placeholder="Enter stock id" name="stockid" required="" data-ng-model="Model.Stock.StockId"
+                               data-ng-pattern="/^[0-9]+$/">
+                        <div class="ui pointing red   basic label" data-ng-show="newstockform.stockid.$error.required && newstockform.stockid.$dirty">
+                            Please enter stock id
+                        </div>
+                        <div class="ui pointing red   basic label" data-ng-show="newstockform.stockid.$error.pattern && newstockform.stockid.$dirty">
+                            Please enter numbers only
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-botton-15">
+                    <div class="col-lg-4">
+                        <label>Stock Name</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" placeholder="Enter stock name" name="stockname" required="" data-ng-model="Model.Stock.StockName">
+                        <div class="ui pointing  red basic label" data-ng-show="newstockform.stockname.$error.required && newstockform.stockname.$dirty">
+                            Please enter stock name
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="item" data-ng-show="Model.ShowLoader">
+                <span class="ui segment" style="position: inherit !important">
+                    <span class="ui active dimmer">
+                        <span class="ui small text loader">Please wait.</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-lg-8"></div>
+                <div class="col-lg-2">
+                    <button class="float-right form-control btn btn-default" data-ng-click="Model.Close({QueryData : false})">Close</button>
+                </div>
+                <div class="col-lg-2">
+
+                    <button class="float-right form-control btn btn-primary" data-ng-click="Model.CreateNewStock()"
+                            data-ng-if="newstockform.$valid">
+                        Create
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

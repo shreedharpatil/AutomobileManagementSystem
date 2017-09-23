@@ -1,0 +1,97 @@
+a {
+  color: #00B7FF;
+}
+
+.image_size{
+  height: 290px !important;
+  width: 290px !important;
+}
+
+.popup_actions {
+  background: #efefef;
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(39,41,43,.15);
+  text-align: right;
+}
+
+.popup_header {
+  display: block;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  background: -webkit-linear-gradient(transparent,rgba(0,0,0,.05))#fff;
+  /* background: linear-gradient(transparent,rgba(0,0,0,.05))#fff; */
+  margin: 0;
+  padding: 1.2rem 2rem;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+  font-size: 1.6em;
+  line-height: 1.3em;
+  font-weight: 700;
+  color: rgba(0,0,0,.85);
+  border-bottom: 1px solid rgba(39,41,43,.15);
+}
+
+.mandatory{
+  color:red;
+}
+.center {
+  text-align: center;
+}
+
+.school_title{
+  color: #ffffff;
+}
+
+.head-bg {
+  background: url('../images/logo.jpg') no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 40px;
+}
+
+.margin-top-40{
+margin-top : 40px;
+}
+.bgimage{
+background: url(../../../images/white_leather.png) repeat 0 0 !important; 
+}
+
+.margin-top-27{
+  margin-top: 27px !important;
+}
+
+.margin-top-35{
+  margin-top: 40px !important;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.red-background{
+  background-color: red;
+}
+
+.float-right{
+  float: right;
+}
+
+.student_card:hover {
+  color: #000000 !important;
+  background-color: #ffd85b !important;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.margin-top-10{
+  margin-top: 10px !important;
+}
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
+

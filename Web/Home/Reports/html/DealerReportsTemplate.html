@@ -1,0 +1,131 @@
+﻿
+<div id="dealerreport" class=" card student_card" data-ng-repeat="trans in Model.Transactions | filter : Model.FilterText" style="width:270px">
+    <div class="content">
+        <div id="transdetails" data-ng-show="trans.CurrentView == 'Trans' || !trans.CurrentView">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Trans. Id</label>
+                </div>
+                <div class="col-md-6">
+                    <span data-ng-bind="trans.TransactionId"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Trans. Date</label>
+                </div>
+                <div class="col-md-6">
+                    <span data-ng-bind="trans.TransactionDate | date :'dd-MMM-yyyy'"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Invoice No.</label>
+                </div>
+                <div class="col-md-6">
+                    <span data-ng-bind="trans.InvoiceNumber"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Total Amt.</label>
+                </div>
+                <div class="col-md-6">
+                    <span data-ng-bind="trans.TotalAmount |  currency : '₹'"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Paid Amt.</label>
+                </div>
+                <div class="col-md-6">
+                    <span data-ng-bind="trans.PaidAmount | currency : '₹'"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Due Amt.</label>
+                </div>
+                <div class="col-md-6">
+                    <span data-ng-bind="trans.DueAmount| currency : '₹'"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Vat Amt.({{trans.Vat}}%)</label>
+                </div>
+                <div class="col-md-6">
+                    <span data-ng-bind="trans.VatAmount| currency : '₹'"></span>
+                    <i class="fa fa-plus green_color"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Discount Amt.({{trans.Discount}}%)</label>
+                </div>
+                <div class="col-md-6">
+                    <span data-ng-bind="trans.DiscountAmount| currency : '₹'"></span>
+                    <i class="fa fa-minus red_color"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Trans. Status</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="ui   circular label" data-ng-class="{true:'green',false:'red'}[trans.TransactionStatus == 'Paid']">
+                        <span data-ng-bind="trans.TransactionStatus"></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="stockitemsdetails" data-ng-show="trans.CurrentView == 'Stocks'">
+            <table class="ui striped table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Total Amt.</th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="stockitemsdetails" class="top-margin-10" style="height:250px;overflow-y:scroll;margin-top:-15px;">
+                <table class="ui striped table">
+                    <tbody>
+                        <tr data-ng-repeat="item in trans.StockItems">
+                            <td><span data-ng-bind="item.StockItemName"></span></td>
+                            <td><span data-ng-bind="item.Quantity"></span></td>
+                            <td><span data-ng-bind="item.TotalAmount| currency : '₹'"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div id="stockinvoice" data-ng-show="trans.CurrentView == 'Invoice'">
+            <div class="row">
+                <img data-ng-src="{{trans.InvoiceUrl}}" alt="No image found" class="invoice-width" />
+
+            </div>
+
+        </div>
+        <div class="ui negative message" data-ng-show="Model.Transactions.length == 0 && !Model.ShowLoader">
+            <i class="close icon"></i>
+            <div class="header">
+                <i class="fa fa-exclamation-circle orange-color"></i> Sorry!!
+            </div>
+            <p class="bold">
+                No transactions have beed found for the selected criteria. Please try changing the criteria and try again.
+            </p>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="">
+            <a class="pointer-cursor" data-ng-click="Model.Toggle(trans,'Trans')"><i class="fa fa-eye"></i>Trans</a>
+            <a class="pointer-cursor" data-ng-click="Model.Toggle(trans,'Stocks')"><i class="fa fa-eye"></i>Stocks</a>
+            <a class="pointer-cursor" data-ng-click="Model.Toggle(trans,'Invoice')"><i class="fa fa-eye"></i>Invoice</a>
+        </span>
+    </div>
+</div>

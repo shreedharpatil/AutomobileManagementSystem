@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Bootstrap Core CSS -->
+    <link href="../TemplateTheme/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="../TemplateTheme/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../TemplateTheme/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../TemplateTheme/css/style.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../TemplateTheme/css/css" rel="stylesheet" type="text/css">
+
+    <link href="../Content/customstyles.css" rel="stylesheet" />
+
+    <link href="../Content/semantic.min.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body data-ng-app="ABS" data-ng-controller="LoginController">
+    <div data-ng-include="Model.HeaderTemplate"></div>
+    
+    <div>
+        <div class="">
+            <div class="container">
+                <div class="row" style="padding-top: 80px;">
+                    <div class=" col-md-3">
+                    </div>
+                    <div class=" col-md-6">
+                        <form name="loginform" id="loginform" >
+                            <div class="row">
+                                <div class="col-lg-3 text-center"></div>
+                                <div class="col-lg-6 text-center">
+                                    <h2 class="white">
+                                        <span>Log In</span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 text-center"></div>
+                                <div class="col-lg-6 text-center">
+                                    <div class="form-group">
+                                        <label class="label-align-left">Username</label>
+                                        <input type="text" class="form-control" placeholder="Enter your username" id="username" 
+                                               required="" data-ng-model="Model.Login.UserName">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label-align-left">Password</label>
+                                        <input type="password" class="form-control" placeholder="Enter your password" id="password"
+                                               required="" data-ng-model="Model.Login.Password">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-lg-3 text-center"></div>
+                                <div class="col-lg-6 text-center">
+                                    <div id="success"></div>
+                                    <button type="button" class="form-control  btn btn-primary" data-ng-click="Model.DoLogin()">Login</button>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-lg-3 text-center"></div>
+                                <div class="col-lg-6 text-center">
+                                    <span  style="color:red" data-ng-bind="Model.ErrorMessage"></span>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="item" data-ng-show="Model.ShowLoader">
+                            <span class="ui segment" style="position: inherit !important">
+                                <span class="ui active dimmer">
+                                    <span class="ui small text loader">Logging in. Please wait.</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div data-ng-include="Model.FooterTemplate"></div>
+</body>
+
+</html>
+
+<!-- Template js -->
+
+<script src="../Scripts/jquery-2.1.4.min.js"></script>
+<!--<script src="../TemplateTheme/js/jquery-2.1.1.min.js"></script>-->
+<script src="../TemplateTheme/js/bootstrap.min.js"></script>
+<script src="../TemplateTheme/js/jquery.appear.js"></script>
+<script src="../TemplateTheme/js/contact_me.js"></script>
+<script src="../TemplateTheme/js/jqBootstrapValidation.js"></script>
+<script src="../TemplateTheme/js/modernizr.custom.js"></script>
+<script src="../TemplateTheme/js/script.js"></script>
+
+<script src="../Scripts/angular.min.js"></script>
+<script src="../Scripts/angular-route.min.js"></script>
+<script src="../Scripts/bootstrap-datetimepicker.min.js"></script>
+<script src="../Scripts/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="../Scripts/dialogs.min.js"></script>
+
+<script src="js/AutoBillingModule.js"></script>
+<script src="js/LoginService.js"></script>
+<script src="js/LoginController.js"></script>

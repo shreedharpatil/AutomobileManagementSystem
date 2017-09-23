@@ -1,0 +1,15 @@
+Follow below instructions to setup database
+1. open my sql bin folder(goto path where mysql is installed)
+2. enter "cmd" in the address bar to open command prompt
+3. enter following command
+mysql -uroot -p (hit enter)
+then enter your mysql password
+4. enter following command and hit enter
+CREATE USER 'abs'@'localhost' IDENTIFIED BY 'abs'; GRANT ALL PRIVILEGES ON * . * TO 'abs'@'localhost'; FLUSH PRIVILEGES;
+5. enter following command and hit enter
+source path_to_abs.sql_file(this file abs.sql will present in source code)
+
+
+yes you are done.......
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root'

@@ -1,0 +1,4 @@
+alter table dealer_transaction add column vat double(20,3);
+alter table dealer_transaction add column discount decimal(20,3);
+alter table dealer_transaction add column stock_item_prices varchar(1000);
+alter table customer_transaction add column stock_item_prices varchar(1000);

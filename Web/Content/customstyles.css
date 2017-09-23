@@ -1,0 +1,177 @@
+﻿.label-align-left {
+    color: white;
+    margin-right: 185px;
+    font-size: large;
+}
+
+.white {
+    color:white;
+}
+
+.bold {
+    font-weight : bold;
+}
+
+.black-color {
+    color : black;
+}
+
+.black-background {
+    background:black;
+}
+
+.margin-botton-15 {
+        margin-bottom: 15px;
+}
+
+.student_card:hover {
+  color: #000000 !important;
+  background-color: #ffd85b !important;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.font-size-15 {
+    font-size : 15px;
+}
+
+/*modal popup related boot strap syles*/
+.popup_header {
+  display: block;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  background: -webkit-linear-gradient(transparent,rgba(0,0,0,.05))#fff;
+  /* background: linear-gradient(transparent,rgba(0,0,0,.05))#fff; */
+  margin: 0;
+  padding: 1.2rem 2rem;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+  font-size: 1.6em;
+  line-height: 1.3em;
+  font-weight: 700;
+  color: rgba(0,0,0,.85);
+  border-bottom: 1px solid rgba(39,41,43,.15);
+}
+
+.popup_actions {
+  background: #efefef;
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(39,41,43,.15);
+  text-align: right;
+}
+/*ends*/
+
+.pointer-cursor {
+    cursor:pointer;
+}
+
+.orange-color {
+        color: #FF432E !important;        
+}
+
+.font-size-30 {
+    font-size : 30px;
+}
+
+.font-size-20 {
+    font-size : 20px;
+}
+
+.margin-left-negative-32 {
+    margin-left: -32px;
+}
+
+.display-inline {
+    display:inline;
+}
+
+tr.light-blue > th {
+    color: #009fda !important;
+}
+
+.top-margin-10 {
+    margin-top : 10px;
+}
+
+.font-size-15 {
+    font-size  : 15px;
+}
+
+.height-100 {
+    height:100px;
+}
+
+.height-180 {
+    height:180px;
+}
+
+.customer-thumbnail {
+    height:25px;
+}
+
+.float-right {
+    float:right;    
+}
+
+.padding-right-5 {
+    padding-right:5px;
+}
+.yellow-color {
+    color:yellow;
+}
+
+.invoice-width {
+    width:272px!important;
+}
+
+.stock-refresh-icon {
+    margin-left: -20px!important;
+    font-size: 30px;    
+}
+
+.stock-filter-textbox {
+    margin-left: -35px!important;
+}
+
+.customer-report-trans:hover {
+color:black!important;
+    background-color:white;
+}
+
+.customer-report-trans > div.content > div.header:hover {
+    color:black!important;
+}
+
+.customer-report-active-trans {
+        background-color:white;
+        color:black;
+}
+
+ .customer-report-active-trans > div.content > div.header {
+    color:black!important;
+}
+
+.margin-top-10 {
+    margin-top:10px;
+}
+
+div.student_card > div.content > div.row {
+    word-break:break-all !important;
+}
+
+.line-strike {
+    text-decoration:line-through;
+}
+
+a#backup:hover{
+    background: whitesmoke;
+    height: 40px;
+    width: 100px;
+    text-align: center ;
+    padding-top: 10px ;
+}
+
+.green_color {
+    color: green;
+}
+.red_color {
+    color: red;
+}

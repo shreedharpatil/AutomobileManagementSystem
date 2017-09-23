@@ -1,0 +1,55 @@
+﻿<section>
+    <div class="modal-content">
+        <div class="popup_header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="Model.Close({QueryData : false})" aria-hidden="true">&times;</button>
+            <h4 class="modal-title bold">Update Stock Details</h4>
+        </div>
+        <div class="modal-body  body-custom" style="color: black !important">
+            <form name="updatetockform">  
+                <div class="row margin-botton-15">
+                    <div class="col-lg-4">
+                        <label>Stock Item Id</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <span data-ng-bind="Model.Stock.StockId"></span>
+                    </div>
+                </div>
+                <div class="row margin-botton-15">
+                    <div class="col-lg-4">
+                        <label>Stock Name</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" placeholder="Enter stock name" name="stockname" required="" data-ng-model="Model.Stock.StockName">
+                        <div class="ui pointing  red basic label" data-ng-show="updatetockform.stockname.$error.required && updatetockform.stockname.$dirty">
+                            Please enter stock name
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="item" data-ng-show="Model.ShowLoader">
+                <span class="ui segment" style="position: inherit !important">
+                    <span class="ui active dimmer">
+                        <span class="ui small text loader">Please wait.</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-lg-8"></div>
+                <div class="col-lg-2">
+                    <button class="float-right form-control btn btn-default" data-ng-click="Model.Close({QueryData : false})">Close</button>
+                </div>
+                <div class="col-lg-2">
+
+                    <button class="float-right form-control btn btn-primary" data-ng-click="Model.UpdateStock()"
+                            data-ng-if="updatetockform.$valid">
+                        Update
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

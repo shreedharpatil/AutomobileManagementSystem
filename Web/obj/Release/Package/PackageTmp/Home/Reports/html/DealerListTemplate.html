@@ -1,0 +1,14 @@
+﻿<div id="dealerview" class="ui inverted relaxed divided list">
+    <div class="item pointer-cursor customer-report-trans" data-ng-class="{true:'customer-report-active-trans',false:''}[report.Details.IsActive]"
+         data-ng-repeat="report in Model.Reports" data-ng-click="Model.LoadTransaction(report,'Id')">
+        <div class="content">
+            <div class="header">
+                <span>{{report.Details.Id}}, {{report.Details.Title}} {{report.Details.FirstName}}, {{report.Details.LastName}}</span>
+                <div class="ui red  circular label">
+                    <span data-ng-bind="report.Transactions.length"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

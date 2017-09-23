@@ -1,0 +1,124 @@
+﻿<section class="container" data-ng-controller="ViewDailySheetController">
+    <a data-ng-click="Model.ToggleState()" class="pointer-cursor"><i class="fa font-size-20"></i><span class="font-size-20">Save Daily Sheet</span></a>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="ui inverted table">
+                <tbody>
+                    <tr>
+                        <td colspan="3">
+                            <span class="orange-color font-size-20">Daily Sheet Criteria</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Select Date:</label></td>
+                        <td>
+                            <input type="date" data-ng-model="Model.DateOfExpenditure" class="form-control" />
+                        </td>
+                        <td>
+                            <button class="float-right form-control btn btn-primary" data-ng-click="Model.LoadDailySheets()">
+                                <i class="fa fa-search"></i>Search
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row margin-top-10">
+        <div class="col-md-12">
+            <div class="item" data-ng-show="Model.ShowLoader">
+                <span class="ui segment" style="position: inherit !important">
+                    <span class="ui active dimmer">
+                        <span class="ui small text loader">Loading. Please wait...</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6"><label class="white orange-color font-size-20"><i class="fa fa-newspaper-o font-size-30"></i>Daily Sheet</label></div>
+                <div class="col-md-4 orange-color font-size-15 margin-top-10">
+                    <label>Total Amount : </label>
+                </div>
+                <div class="col-md-2 orange-color font-size-15 margin-top-10">
+                    <span data-ng-bind="Model.TotalDailySheetAmount | currency : '₹'"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="ui inverted table">
+                        <thead>
+                            <tr class="light-blue">
+                                <th>Particulars</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="ui negative  message margin-botton-15" data-ng-show="Model.DailySheets.length == 0 && !Model.ShowLoader">
+                                        <i class="close icon"></i>
+                                        <div class="header">
+                                            <i class="fa fa-exclamation-circle orange-color"></i> Sorry!!
+                                        </div>
+                                        <p class="bold">
+                                            No daily sheet details found.
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr data-ng-repeat="sheet in Model.DailySheets">
+                                <td>
+                                    <span data-ng-bind="sheet.Particulars"></span>
+                                </td>
+                                <td>
+                                    <span data-ng-bind="sheet.Quantity"></span>
+                                </td>
+                                <td>
+                                    <span data-ng-bind="sheet.Amount | currency : '₹'"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6"><label class="white orange-color font-size-20"><i class="fa fa-newspaper-o font-size-30"></i>Daily Expenditure Sheet</label></div>
+                <div class="col-md-4 orange-color font-size-15 margin-top-10">
+                    <label>Total Amount : </label>
+                </div>
+                <div class="col-md-2 orange-color font-size-15 margin-top-10">
+                    <span data-ng-bind="Model.TotalDailyExpenditureSheetAmount | currency : '₹'"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="ui inverted table">
+                        <thead>
+                            <tr class="light-blue">
+                                <th>Particulars</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="sheet in Model.DailyExpenditureSheets">
+                                <td>
+                                    <span data-ng-bind="sheet.Particulars"> </span>
+                                </td>
+                                <td>
+                                    <span data-ng-bind="sheet.Amount | currency : '₹'"> </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

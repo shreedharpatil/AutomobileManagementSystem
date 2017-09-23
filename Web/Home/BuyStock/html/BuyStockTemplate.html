@@ -1,0 +1,242 @@
+﻿<div class="container">
+    <a href="#/home"><i class="fa fa-backward font-size-30"></i><span class="font-size-20">Back to Home</span></a>
+    <br />
+    <div class="row">
+        <div class="col-md-4"><label class="white orange-color font-size-20"><i class="fa fa-long-arrow-down font-size-30"></i>Buy Stocks</label></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="ui inverted table">
+                <tbody>
+                    <tr>
+                        <td colspan="7" class="orange-color font-size-15">
+                            Dealer Details
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <div class="row">
+                                <div class="col-md-3">Select Delaer</div>
+                                <div class="col-md-6">
+                                    <div class="ui floating dropdown labeled icon button">
+                                        <i class="filter icon"></i>
+                                        <span class="text" id="dealerdropdown">Filter Dealers</span>
+                                        <div class="menu">
+                                            <div class="ui icon  input">
+                                                <i class="search icon"></i>
+                                                <input type="text" placeholder="Search tags..." data-ng-model="Model.FilterText">
+                                            </div>
+                                            <div class="divider"></div>
+                                            <div class="header">
+                                                <i class="tags icon"></i>
+                                                Tag Label
+                                            </div>
+                                            <div class="scrolling menu">
+                                                <div class="item" data-ng-repeat="dealer in Model.Dealers | filter : Model.FilterText" data-ng-click="Model.SelectDealer(dealer)">
+                                                    <div class="ui green  circular label">{{dealer.Id}}</div>
+                                                    {{dealer.FirstName}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1" style="    margin-left: -100px;">
+                                    <i class="fa fa-refresh orange-color stock-refresh-icon pointer-cursor" data-ng-click="Model.LoadDealerList()"></i>
+                                </div>
+                                <div class="col-md-3">
+                                    <a href="/Home/Index.html#/managedealers" target="_blank" class="font-size-15 orange-color">
+                                        <i class="fa fa-user "></i>New
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="light-blue">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Place</th>
+                        <th>TinNum.</th>
+                        <th>Mobile No.</th>
+                        <th>Email Id</th>
+                    </tr>
+                    <tr data-ng-if="!Model.Dealer.Id">
+                        <td colspan="7">No dealer selected.</td>
+                    </tr>
+                    <tr data-ng-if="Model.Dealer.Id">
+                        <td><span data-ng-bind="Model.Dealer.Id"></span></td>
+                        <td><span>{{Model.Dealer.FirstName}},{{Model.Dealer.LastName}}</span></td>
+                        <td><span data-ng-bind="Model.Dealer.Address"></span></td>
+                        <td><span data-ng-bind="Model.Dealer.Place"></span></td>
+                        <td><span data-ng-bind="Model.Dealer.TinNumber"></span></td>
+                        <td><span data-ng-bind="Model.Dealer.ContactNumber"></span></td>
+                        <td><span data-ng-bind="Model.Dealer.EmailId"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="ui inverted table">
+                <tbody>
+                    <tr>
+                        <td colspan="7" class="orange-color font-size-15">
+                            Invoice Details
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-3">Invoice No.</div>
+                                <div class="col-md-2"><input class="form-control" data-ng-model="Model.DealerTransaction.InvoiceNumber" type="text" placeholder="Enter invoice number." /></div>
+                                <div class="col-md-3">
+                                    <a data-ng-click="Model.CaptureInvoice()" class="pointer-cursor">Scan invoice copy</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <img id="invoicecopy" class="height-100" data-ng-src="{{Model.Image}}" />
+                                </div>
+                                <!--<div class="col-md-2"><button data-ng-click="Model.UploadPhoto()">Upload</button></div>-->
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row top-margin-10">
+        <div class="col-md-2">
+            <div class="ui pointing below label">
+                Select the goods below.
+            </div>
+            <label></label>
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Search for goods" data-ng-model="Model.StockFilterText" />
+        </div>
+        <div class="col-md-1">
+            <i class="fa fa-refresh orange-color stock-refresh-icon pointer-cursor" data-ng-click="Model.LoadStockList()"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="height:500px;overflow:auto;">
+            <div class="ui inverted segment">
+                <div class="ui inverted accordion">
+                    <div class="ui middle aligned  list">
+                        <div class="item" data-ng-show="Model.ShowStockLoader">
+                            <span class="ui segment" style="position: inherit !important">
+                                <span class="ui active dimmer">
+                                    <span class="ui small text loader">Loading</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="item" data-ng-repeat="stock in Model.Stocks | filter : Model.StockFilterText">
+                            <div class="content pointer-cursor" data-ng-click="Model.LoadStockItemList(stock)">
+                                <div class="ui green  circular label pointer-cursor"><i data-ng-class="{false:'fa fa-plus',true:'fa fa-minus'}[stock.IsShown == true]"></i></div>
+                                <!--<div class="ui green  circular label">{{stock.StockId}}</div>-->
+                                <div class="display-inline">{{stock.StockId}},{{stock.StockName}}</div>
+                            </div>
+                            <div data-ng-show="stock.IsShown">
+                                <div class="ui middle aligned animated list" id="{{stock.StockId}}" style="margin-left:20px">
+                                    <div class="item" data-ng-show="stock.StockItemLoader">
+                                        <span class="ui segment" style="position: inherit !important">
+                                            <span class="ui active dimmer">
+                                                <span class="ui small text loader">Loading</span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="item" data-ng-repeat="stockitem in stock.StockItems | filter : Model.StockFilterText">
+                                        <span data-ng-click="Model.AddGood(stock,stockitem)" class="pointer-cursor">
+                                            <span data-ng-bind="stockitem.StockItemId" class=""></span>,{{stockitem.StockItemName}}
+                                            <a class="ui orange circular label"><span data-ng-bind="stockitem.Quantity"></span></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=" col-md-8" style="height:500px;overflow:auto;">
+
+            <table class="ui inverted table">
+                <tbody>
+                    <tr><td colspan="7" class="orange-color font-size-15">Goods Details</td></tr>
+                    <tr class="light-blue">
+                        <th>Stock Name</th>
+                        <th>StockItem Id</th>
+                        <th>StockItem Name</th>
+                        <th>Unit price</th>
+                        <th>Quantity</th>
+                        <th>Total Amt</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr data-ng-repeat="good in Model.Goods">
+                        <td><span data-ng-bind="good.StockName">Stock Name</span></td>
+                        <td><span data-ng-bind="good.StockItemId">1</span></td>
+                        <td><span data-ng-bind="good.StockItemName">Item Name</span></td>
+                        <td><input type="text" class="form-control" data-ng-model="good.UnitPrice" data-ng-blur="Model.CalculateGoodTotalAmount(good)" /></td>
+                        <td><input type="text" class="form-control" data-ng-model="good.Quantity" data-ng-blur="Model.CalculateGoodTotalAmount(good)" /></td>
+                        <td><span data-ng-bind="good.TotalAmount | currency : '₹'">1</span></td>
+                        <td><a data-ng-click="Model.RemoveGood(good)"><i class="pointer-cursor fa fa-remove font-size-20"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Total Amt.</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.DealerTransaction.TotalAmount" disabled="disabled" /></td>
+                        <td>VAT(in %).</td>
+                        <td><input type="text" class="form-control" data-ng-blur="Model.RefreshCalculation()" data-ng-model="Model.DealerTransaction.Vat" /></td>
+                        <td>Discount (in %).</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.DealerTransaction.Discount" data-ng-blur="Model.RefreshCalculation()" /></td>
+                    </tr>
+                    <tr>
+                        <td> Grand Total</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.DealerTransaction.GrandTotalAmount" disabled="disabled" /></td>
+                        <td>Paid Amt.</td>
+                        <td><input type="text" class="form-control" data-ng-blur="Model.CalculateDueAmount()" data-ng-model="Model.DealerTransaction.PaidAmount" /></td>
+                        <td>Due Amt.</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.DealerTransaction.DueAmount" disabled="disabled" /></td>
+                        <td>
+                            <button type="button" class="float-right form-control btn btn-primary" data-ng-click="Model.SaveTransaction()"
+                                    data-ng-if="Model.Dealer.Id && Model.DealerTransaction.InvoiceNumber && Model.Image != null  && Model.Goods.length > 0 && (Model.DealerTransaction.DueAmount >= 0 && Model.DealerTransaction.PaidAmount <= Model.DealerTransaction.GrandTotalAmount)">
+                                Sale Goods
+                            </button>
+                        </td>
+                    </tr>
+                    <!--<tr>
+                        <td>Total Amt.</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.DealerTransaction.TotalAmount" disabled="disabled" /></td>
+                        <td>Paid Amt.</td>
+                        <td>
+                            <input type="text" class="form-control" data-ng-blur="Model.DeductPaidAmount()" data-ng-model="Model.DealerTransaction.PaidAmount" />
+                        </td>
+                        <td>Due Amt.</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.DealerTransaction.DueAmount" disabled="disabled" /></td>
+                        <td>
+                            <button type="button" class="float-right form-control btn btn-primary" data-ng-click="Model.SaveTransaction()"
+                                    data-ng-if="Model.Dealer.Id && Model.DealerTransaction.InvoiceNumber && Model.Image != null && Model.Goods.length > 0 && (Model.DealerTransaction.DueAmount >= 0 && Model.DealerTransaction.PaidAmount <= Model.DealerTransaction.TotalAmount)">
+                                Buy Goods
+                            </button>
+                        </td>
+                    </tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="item" data-ng-show="Model.ShowLoader">
+        <span class="ui segment" style="position: inherit !important">
+            <span class="ui active dimmer">
+                <span class="ui large text loader">Please wait.</span>
+            </span>
+        </span>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('.ui.accordion').accordion();
+        $('.ui.dropdown').dropdown();
+    });
+</script>

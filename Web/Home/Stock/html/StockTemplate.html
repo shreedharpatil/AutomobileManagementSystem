@@ -1,0 +1,111 @@
+﻿<div class="container">
+    <a href="#/home"><i class="fa fa-backward font-size-30"></i><span class="font-size-20">Back to Home</span></a>
+    <br />
+    <div class="row">
+        <div class="col-md-4"><label class="white orange-color font-size-20"><i class="fa fa-magnet font-size-30"></i>Manage Stocks</label></div>
+        <div class="col-md-4"><span class="white"></span></div>
+        <div class="col-md-2">
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-1 orange-color font-size-20">
+            <a class="pointer-cursor" data-ng-click="Model.CreateNewStock()"><i class="fa fa-plus-circle"></i>New</a>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Any text to search" data-ng-model="Model.StockFilterText" />
+        </div>
+        <div class="col-md-1 orange-color font-size-20">
+            <a class="pointer-cursor" data-ng-click="Model.CreateNewStockItem()"><i class="fa fa-plus-circle"></i>New</a>
+        </div>
+        <div class="col-md-offset-3 col-md-4">
+            <input type="text" class="form-control" placeholder="Any text to search" data-ng-model="Model.StockItemFilterText" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="height:600px;overflow:auto;">
+            <table class="ui inverted table">
+                <thead>
+                    <tr class="light-blue">
+                        <th>Stock Id</th>
+                        <th>Stock Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-if="Model.Stocks.length == 0 && !Model.StockLoader">
+                        <td colspan="3">No stocks found. Click +New link to add one.</td>
+                    </tr>
+                    <tr data-ng-repeat="si in Model.Stocks | filter : Model.StockFilterText" class="customer-report-trans" data-ng-click="Model.StockClicked(si)"
+                        data-ng-class="{true:'customer-report-active-trans',false:''}[si.StockId == Model.ActiveStockId]">
+                        <td data-ng-click="Model.OnStockSelected(si)" class="pointer-cursor"> <span data-ng-class="{true:'line-strike',false:''}[si.StockStatus.toUpperCase() == 'inactive'.toUpperCase()]" data-ng-bind="si.StockId"></span></td>
+                        <td data-ng-click="Model.OnStockSelected(si)" class="pointer-cursor"> <span data-ng-class="{true:'line-strike',false:''}[si.StockStatus.toUpperCase() == 'inactive'.toUpperCase()]" data-ng-bind="si.StockName"></span></td>
+                        <td>
+                            <a data-ng-if="si.StockStatus == 'active'" class="pointer-cursor" data-ng-click="Model.EditStock(si)" data-ng-class="{true:'line-strike',false:''}[si.StockStatus.toUpperCase() == 'inactive'.toUpperCase()]"><i class="fa fa-edit"></i>Edit</a>
+                            <a data-ng-if="si.StockStatus == 'active'" data-ng-click="Model.DeleteStock(si.StockId)" class="pointer-cursor" data-ng-class="{true:'line-strike',false:''}[si.StockStatus.toUpperCase() == 'inactive'.toUpperCase()]"><i class="fa fa-remove"></i>Delete</a>
+                            <a data-ng-if="si.StockStatus == 'inactive'"
+                               data-ng-click="Model.AddBackStock(si)" class="pointer-cursor"><i class="fa fa-plus"></i>Add Back</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="item" data-ng-show="Model.StockLoader">
+                <span class="ui segment" style="position: inherit !important">
+                    <span class="ui active dimmer">
+                        <span class="ui small text loader">Loading</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-8" style="height:600px;overflow:auto;">
+            <table class="ui inverted table">
+                <thead>
+                    <tr class="light-blue">
+                        <th>Id</th>
+                        <th>Description</th>
+                        <th>UnitPrice</th>
+                        <th>Quantity</th>
+                        <th>Unit Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-if="Model.StockItems.length==0 && CurrentSelectedStock == null">
+                        <td colspan="6">
+                            <span> You Have not selected stock. Please select a stock from left table.</span>
+                        </td>
+                    </tr>
+                    <tr data-ng-if="Model.StockItems.length==0 && CurrentSelectedStock != null">
+                        <td colspan="6">
+                            <span> There are no products. Please click New link  to add a one.</span>
+                        </td>
+                    </tr>
+                    <tr data-ng-if="Model.StockItemLoader">
+                        <td>
+                            <!--    <span class="ui small text loader">Loading</span>-->
+
+                            <span class="ui segment" style="position: inherit !important">
+                                <span class="ui active dimmer">
+                                    <span class="ui small text loader">Loading</span>
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr data-ng-repeat="si in Model.StockItems | filter : Model.StockItemFilterText" class="pointer-cursor" data-ng-class="{true:'line-strike', false:''}[si.StockStatus == 'inactive']">
+                        <td> <span data-ng-bind="si.StockItemId"></span></td>
+                        <td> <span data-ng-bind="si.StockItemName"></span></td>
+                        <td> <span data-ng-bind="si.UnitPrice | currency : '₹'"></span></td>
+                        <td> <span data-ng-bind="si.Quantity"></span></td>
+                        <td> <span data-ng-bind="si.UnitType"></span></td>
+                        <td>
+                            <a data-ng-if="si.StockStatus == 'active'" class="pointer-cursor" data-ng-click="Model.EditStockItem(si)"><i class="fa fa-edit"></i>Edit</a>
+                            <a data-ng-if="si.StockStatus == 'active'" class="pointer-cursor" data-ng-click="Model.DeleteStockItem(si)"><i class=" fa fa-remove"></i>Delete</a>
+                            <a data-ng-if="si.StockStatus == 'inactive'" class="pointer-cursor" data-ng-click="Model.AddBackStockItem(si)"><i class=" fa fa-plus"></i>Add Back</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

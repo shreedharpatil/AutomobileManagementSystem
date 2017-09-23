@@ -1,0 +1,104 @@
+﻿<div class="container" data-ng-if="Model.CustomerProfileTemplate.length == 0">
+    <a href="#/home"><i class="fa fa-backward font-size-30"></i><span class="font-size-20">Back to Home</span></a>
+    <div class="row">
+        <div class="col-md-8"><label class="white orange-color font-size-20"><i class="fa fa-users font-size-30"></i>Customer List</label></div>
+        <!--    <div class="col-md-3"><span class="white"></span></div>-->
+        <div class="col-md-2 float-right margin-left-negative-32"><a class="white pointer-cursor font-size-20 orange-color" data-ng-click="Model.CreateNewCustomer()"><i class="fa fa-plus font-size-30"></i> Customer</a></div>
+        <div class="col-md-2 float-right">
+            <input type="text" class="form-control" placeholder="Any text to search" data-ng-model="Model.FilterText" style="margin-left:-10px;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="ui negative  message margin-botton-15" data-ng-show="Model.Customers.length == 0 && !Model.ShowLoader">
+            <i class="close icon"></i>
+            <div class="header">
+                <i class="fa fa-exclamation-circle orange-color"></i> Sorry!!
+            </div>
+            <p class="bold">
+                No cutomer records found. Please add the customer by clicking +customer link above.
+            </p>
+        </div>
+        <div class="row" data-ng-show="Model.ShowLoader">
+            <div class="col-md-12">
+                <div class="item">
+                    <span class="ui segment" style="position: inherit !important">
+                        <span class="ui active dimmer">
+                            <span class="ui small text loader">Loading</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="ui special cards margin-top-35">
+            <div class="card student_card" data-ng-repeat="customer in Model.Customers | filter : Model.FilterText" style="width: 270px">
+                <div class="content ">
+                    <a class="header">{{customer.CustomerId}},{{customer.CustomerFirstName}},{{customer.CustomerLastName}}</a>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Address</label>
+                        </div>
+                        <div class="col-md-6">
+                            <span data-ng-bind="customer.CustomerAddress"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Place</label>
+                        </div>
+                        <div class="col-md-6">
+                            <span data-ng-bind="customer.CustomerPlace"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Vehicle Number</label>
+                        </div>
+                        <div class="col-md-6">
+                            <span data-ng-bind="customer.CustomerVehicleNum"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Vehicle Type</label>
+                        </div>
+                        <div class="col-md-6">
+                            <span data-ng-bind="customer.CustomerVehicleType"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Mobile Number</label>
+                        </div>
+                        <div class="col-md-6">
+                            <span data-ng-bind="customer.CustomerMobile"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email Id</label>
+                        </div>
+                        <div class="col-md-6">
+                            <span data-ng-bind="customer.CustomerEmailId"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <span class="">
+                        <img data-ng-src="{{customer.CustomerImageUrl}}" class="customer-thumbnail" />
+                        <a class="pointer-cursor float-right padding-right-5" data-ng-click="Model.ShowCustomerProfile(customer)"><i class="fa fa-user"></i>Profile</a>
+                        <a class="pointer-cursor float-right padding-right-5" data-ng-click="Model.EditCustomer(customer)"><i class="fa fa-edit"></i>Edit</a>
+                        <!--<a class="pointer" data-ng-click="Model.UpdateFeeDetails(admission)"><i class="edit icon"></i>Edit Fee Details</a>
+                        <a class="pointer" href="/api/year?id={{Model.Student.RegistrationNumber}}&year={{admission.StandardId}}"><i class="download icon"></i>Download Receipt</a>-->
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="customerprofile">
+    <div data-ng-include="Model.CustomerProfileTemplate"></div>
+</div>

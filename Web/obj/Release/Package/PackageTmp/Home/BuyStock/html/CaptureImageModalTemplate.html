@@ -1,0 +1,31 @@
+﻿<section>
+    <div class="modal-content" style="height:500px">
+        <div class="popup_header">
+            <button type="button" class="close" data-dismiss="modal" data-ng-click="close()" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Capture Invoice copy</h4>
+        </div>
+        <div class="modal-body  body-custom" style="color: black !important">
+            <form class="ui form margin-top-35" name="addfeeform">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="camera">
+                            <video id="video">Video stream not available.</video>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="canvas"></canvas>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="ui yellow button" data-ng-click="Model.StartCamera()" data-ng-show="!Model.IsCameraStarted">Start Camera</div>
+                        <div class="ui yellow button" id="startbutton" data-ng-show="Model.IsCameraStarted">Take Photo</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="ui yellow button" data-ng-click="Model.Close()" data-ng-show="Model.IsCameraStarted">Finalize Photo</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

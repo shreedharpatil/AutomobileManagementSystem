@@ -1,0 +1,138 @@
+﻿<section>
+    <div class="" >
+        <div class="row margin-botton-15">
+            <div class="col-lg-4">
+                <label>Select Title</label>
+            </div>
+            <div class="col-lg-5">
+                <select class="form-control" data-ng-model="Model.Dealer.Title" required="" name="title">
+                    <option value="">-----Please select-----</option>
+                    <option>Mr.</option>
+                    <option>Mrs.</option>
+                </select>
+                <div class="ui pointing red basic label" data-ng-show="dealerform.title.$error.required && dealerform.title.$dirty">
+                    Please select title
+                </div>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-4">
+                <label >First Name</label>
+            </div>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" placeholder="Enter dealer firstname" name="firstname" required="" data-ng-model="Model.Dealer.FirstName">
+                <div class="ui pointing red basic label" data-ng-show="dealerform.firstname.$error.required && dealerform.firstname.$dirty">
+                    Please enter first name
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 100 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-4">
+                <label >Last Name</label>
+            </div>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" placeholder="Enter dealer lastname" name="lastname" required="" data-ng-model="Model.Dealer.LastName">
+
+                <div class="ui pointing red basic label" data-ng-show="dealerform.lastname.$error.required && dealerform.lastname.$dirty">
+                    Please enter last name
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 100 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-4">
+                <label>Address</label>
+            </div>
+            <div class="col-lg-5">
+                <textarea class="form-control" placeholder="Enter dealer address" name="address" required="" data-ng-model="Model.Dealer.Address"></textarea>
+
+                <div class="ui pointing red basic label" data-ng-show="dealerform.address.$error.required && dealerform.address.$dirty">
+                    Please enter address
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 500 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-4">
+                <label >Place</label>
+            </div>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" placeholder="Enter dealer place" name="place" required="" data-ng-model="Model.Dealer.Place">
+
+                <div class="ui pointing red basic label" data-ng-show="dealerform.place.$error.required && dealerform.place.$dirty">
+                    Please enter place
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 100 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-4">
+                <label >Tin Number</label>
+            </div>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" placeholder="Enter dealer tin number" data-ng-pattern="/^[0-9]{11}$/"
+                        name="tinnumber" required="" data-ng-model="Model.Dealer.TinNumber">
+                <div class="ui pointing red basic label" data-ng-show="dealerform.tinnumber.$error.required && dealerform.tinnumber.$dirty">
+                    Please enter tin number
+                </div>
+                <div class="ui pointing red basic label" data-ng-show="dealerform.tinnumber.$error.pattern && dealerform.tinnumber.$dirty">
+                    Please enter 11 digit tin number
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 11 characters</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-4">
+                <label >Mobile Number</label>
+            </div>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" placeholder="Enter dealer mobile number" name="mobilenumber" data-ng-pattern="ValidationMessage.MobileNumberRegEx"
+                       required="" data-ng-model="Model.Dealer.ContactNumber">
+
+                <div class="ui pointing red basic label" data-ng-show="dealerform.mobilenumber.$error.required && dealerform.mobilenumber.$dirty">
+                    Please enter mobile number
+                </div>
+
+                <div class="ui pointing red basic label" data-ng-show="dealerform.mobilenumber.$error.pattern && dealerform.mobilenumber.$dirty">
+                    Please enter 10 or 12 digit mobile number
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 12 numbers</a>
+            </div>
+        </div>
+
+        <div class="row margin-botton-15">
+            <div class="col-lg-4">
+                <label >Email Id</label>
+            </div>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" placeholder="Enter dealer email id" name="emailid" required="" data-ng-model="Model.Dealer.EmailId">
+
+                <div class="ui pointing red basic label" data-ng-show="dealerform.emailid.$error.required && dealerform.emailid.$dirty">
+                    Please enter email id
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a class="ui teal tag label">Max. 100 characters</a>
+            </div>
+        </div>
+    </div>
+</section>

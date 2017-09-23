@@ -1,0 +1,229 @@
+﻿<div class="container">
+    <a href="#/home"><i class="fa fa-backward font-size-30"></i><span class="font-size-20">Back to Home</span></a>
+    <br />
+    <div class="row">
+        <div class="col-md-4"><label class="white orange-color font-size-20"><i class="fa fa-long-arrow-up font-size-30"></i>Sell Stocks</label></div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <table class="ui inverted table">
+                <tbody>
+                    <tr>
+                        <td colspan="7" class="orange-color font-size-15">
+                            Customer Details
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <div class="row">
+                                <div class="col-md-3">Select Customer</div>
+                                <div class="col-md-5">
+                                    <div class="ui floating dropdown labeled icon button">
+                                        <i class="filter icon"></i>
+                                        <span class="text" id="customerdropdown">Filter Customers</span>                                        
+                                        <div class="menu">
+                                            <div class="ui icon  input">
+                                                <i class="fa fa-search"></i>
+                                                <input type="text" placeholder="Search tags..." data-ng-model="Model.FilterText">
+                                            </div>
+                                            <div class="divider"></div>
+                                            <div class="header">
+                                                <i class="tags icon"></i>
+                                                Tag Label
+                                            </div>
+                                            <div class="scrolling menu">
+                                                <div class="item" data-ng-repeat="customer in Model.Customers | filter : Model.FilterText" data-ng-click="Model.SelectCustomer(customer)">
+                                                    <div class="ui green  circular label" data-ng-if="!customer.IsGuestUser">{{customer.CustomerId}}</div>
+                                                    <div class="ui yellow  circular label" data-ng-if="customer.IsGuestUser">G</div>
+                                                    {{customer.CustomerTitle}}, {{customer.CustomerFirstName}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-1" style="    margin-left: -95px;">
+                                    <i class="fa fa-refresh orange-color stock-refresh-icon pointer-cursor" data-ng-click="Model.LoadCustomerList()"></i>
+                                </div>
+                                <div class="col-md-3">
+                                    <a href="/Home/Index.html#/managecustomers" target="_blank" class="font-size-15 orange-color">
+                                        <i class="fa fa-user "></i>New
+                                    </a>
+                                    <a class="ui yellow circular label pointer-cursor" data-ng-click="Model.OpenGuestUserDialog()">
+                                        Guest
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="light-blue" data-ng-if="!Model.IsGuestUser">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Place</th>
+                        <th>Vehicle No.</th>
+                        <th>Vehicle Type</th>
+                        <th>Mobile No.</th>
+                        <th>Email Id</th>
+                    </tr>
+                    <tr class="light-blue" data-ng-if="Model.IsGuestUser">
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Mobile No.</th>
+                    </tr>
+                    <tr data-ng-if="!Model.Customer.CustomerId && !Model.IsGuestUser">
+                        <td colspan="7">No customer selected.</td>
+                    </tr>
+                    <tr data-ng-if="Model.Customer.CustomerId">
+                        <td><span data-ng-bind="Model.Customer.CustomerId"></span></td>
+                        <td><span>{{Model.Customer.CustomerTitle}}{{Model.Customer.CustomerFirstName}},{{Model.Customer.CustomerLastName}}</span></td>
+                        <td><span data-ng-bind="Model.Customer.CustomerAddress"></span></td>
+                        <td><span data-ng-bind="Model.Customer.CustomerPlace"></span></td>
+                        <td><span data-ng-bind="Model.Customer.CustomerVehicleNum"></span></td>
+                        <td><span data-ng-bind="Model.Customer.CustomerMobile"></span></td>
+                        <td><span data-ng-bind="Model.Customer.CustomerEmailId"></span></td>
+                    </tr>
+                    <tr data-ng-if="Model.IsGuestUser">
+                        <td><span>{{Model.Customer.CustomerTitle}}{{Model.Customer.CustomerFirstName}},{{Model.Customer.CustomerLastName}}</span></td>
+                        <td><span data-ng-bind="Model.Customer.CustomerAddress"></span></td>
+                        <td><span data-ng-bind="Model.Customer.CustomerMobile"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <table class="ui inverted table">
+                <tbody>
+                    <tr>
+                        <td colspan="7" class="orange-color font-size-15">
+                            <img data-ng-src="{{Model.Customer.CustomerImageUrl}}" alt="No photo available." class="height-180" id="customerphoto" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row top-margin-10">
+        <div class="col-md-2">
+            <div class="ui pointing below label">
+                Select the goods below.
+            </div>
+            <label></label>
+        </div>
+        <div class="col-md-2 stock-filter-textbox">
+            <input type="text" class="form-control " placeholder="Search for goods" data-ng-model="Model.StockFilterText" />
+        </div>
+        <div class="col-md-1">
+            <i class="fa fa-refresh orange-color stock-refresh-icon pointer-cursor" data-ng-click="Model.LoadStockList()"></i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style="height:500px;overflow:auto;">
+            <div class="ui inverted segment">
+                <div class="ui inverted accordion">
+                    <div class="ui middle aligned  list">
+                        <div class="item" data-ng-show="Model.ShowStockLoader">
+                            <span class="ui segment" style="position: inherit !important">
+                                <span class="ui active dimmer">
+                                    <span class="ui small text loader">Loading</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="item" data-ng-repeat="stock in Model.Stocks | filter : Model.StockFilterText">
+                            <div class="content pointer-cursor" data-ng-click="Model.LoadStockItemList(stock)">
+                                <div class="ui green  circular label pointer-cursor"><i data-ng-class="{false:'fa fa-plus',true:'fa fa-minus'}[stock.IsShown == true]"></i></div>
+                                <!--<div class="ui green  circular label">{{stock.StockId}}</div>-->
+                                <div class="display-inline">{{stock.StockId}},{{stock.StockName}}</div>
+                            </div>
+                            <div data-ng-show="stock.IsShown">
+                                <div class="ui middle aligned animated list" id="{{stock.StockId}}" style="margin-left:20px">
+                                    <div class="item" data-ng-show="stock.StockItemLoader">
+                                        <span class="ui segment" style="position: inherit !important">
+                                            <span class="ui active dimmer">
+                                                <span class="ui small text loader">Loading</span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="item" data-ng-repeat="stockitem in stock.StockItems | filter : Model.StockFilterText">
+                                        <span data-ng-click="Model.AddGood(stock,stockitem)" class="pointer-cursor">
+                                            <span data-ng-bind="stockitem.StockItemId" class=""></span>,{{stockitem.StockItemName}}
+                                            <i class="fa fa-warning yellow-color" data-ng-show="stockitem.Quantity == 0"></i>
+                                            <a class="ui orange circular label" data-ng-show="stockitem.Quantity != 0"><span data-ng-bind="stockitem.Quantity"></span></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=" col-md-8" style="height:500px;overflow:auto;">
+
+            <table class="ui inverted table">
+                <tbody>
+                    <tr><td colspan="7" class="orange-color font-size-15">Goods Details</td></tr>
+                    <tr class="light-blue">
+                        <th>Stock Name</th>
+                        <th>StockItem Id</th>
+                        <th>StockItem Name</th>
+                        <th>Unit price</th>
+                        <th>Availble Qty.</th>
+                        <th>Quantity</th>
+                        <th>Total Amt</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr data-ng-repeat="good in Model.Goods">
+                        <td><span data-ng-bind="good.StockName">Stock Name</span></td>
+                        <td><span data-ng-bind="good.StockItemId">1</span></td>
+                        <td><span data-ng-bind="good.StockItemName">Item Name</span></td>
+                        <td><input type="text" class="form-control" data-ng-model="good.UnitPrice" data-ng-blur="Model.CalculateGoodTotalAmount(good)" /></td>
+                        <td><span data-ng-bind="good.AvailableQuantity"></span></td>
+                        <td><input type="text" class="form-control" data-ng-model="good.Quantity" data-ng-blur="Model.CalculateGoodTotalAmount(good)" /></td>
+                        <td><span data-ng-bind="good.TotalAmount | currency : '₹'">1</span></td>
+                        <td><a data-ng-click="Model.RemoveGood(good)"><i class="pointer-cursor fa fa-remove font-size-20"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Total Amt.</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.CustomerTransaction.TotalAmount" disabled="disabled" /></td>
+                        <td>VAT(in %).</td>
+                        <td><input type="text" class="form-control" data-ng-blur="Model.RefreshCalculation()" data-ng-model="Model.CustomerTransaction.Vat" /></td>
+                        <td>Discount (in %).</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.CustomerTransaction.Discount" data-ng-blur="Model.RefreshCalculation()" /></td>
+                    </tr>
+                    <tr>
+                        <td> Grand Total</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.CustomerTransaction.GrandTotalAmount" disabled="disabled" /></td>
+                        <td>Paid Amt.</td>
+                        <td><input type="text" class="form-control" data-ng-blur="Model.CalculateDueAmount()" data-ng-model="Model.CustomerTransaction.PaidAmount" /></td>
+                        <td>Due Amt.</td>
+                        <td><input type="text" class="form-control" data-ng-model="Model.CustomerTransaction.DueAmount" disabled="disabled" /></td>
+                        <td>
+                            <button type="button" class="float-right form-control btn btn-primary" data-ng-click="Model.SaveTransaction()"
+                                    data-ng-if="(Model.Customer.CustomerId || Model.IsGuestUser)   && Model.Goods.length > 0 && (Model.CustomerTransaction.DueAmount >= 0 && Model.CustomerTransaction.PaidAmount <= Model.CustomerTransaction.GrandTotalAmount)">
+                                Sale Goods
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="item" data-ng-show="Model.ShowLoader">
+        <span class="ui segment" style="position: inherit !important">
+            <span class="ui active dimmer">
+                <span class="ui large text loader">Please wait.</span>
+            </span>
+        </span>
+    </div>
+</div>
+<a id="pdfdownload"></a>
+
+<script>
+
+    $(document).ready(function () {
+        $('.ui.accordion').accordion();
+        $('.ui.dropdown').dropdown();
+    });
+</script>

@@ -1,0 +1,72 @@
+﻿<div>
+    <div class="row margin-botton-15" data-ng-if="Model.StockItem.StockItemId">
+        <div class="col-lg-4">
+            <label>Stock Item Id</label>
+        </div>
+        <div class="col-lg-5">
+            <span data-ng-bind="Model.StockItem.StockItemId"></span>
+        </div>
+    </div>
+    <div class="row margin-botton-15">
+        <div class="col-lg-4">
+            <label>Stock Item Name</label>
+        </div>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" placeholder="Enter stock item name" name="stockitemname" required="" data-ng-model="Model.StockItem.StockItemName">
+            <div class="ui pointing red basic label" data-ng-show="stockitemform.stockitemname.$error.required && stockitemform.stockitemname.$dirty">
+                Please enter stock item name
+            </div>
+        </div>
+    </div>
+    <div class="row margin-botton-15">
+        <div class="col-lg-4">
+            <label>Unit Price</label>
+        </div>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" placeholder="Enter stock item unit price" name="unitprice" required="" data-ng-model="Model.StockItem.UnitPrice"
+                   data-ng-pattern="/^\d+(\.\d{1,2})?$/">
+            <div class="ui pointing red basic label" data-ng-show="stockitemform.unitprice.$error.required && stockitemform.unitprice.$dirty">
+                Please enter stock item unitprice
+            </div>
+            <div class="ui pointing red basic label" data-ng-show="stockitemform.unitprice.$error.pattern && stockitemform.unitprice.$dirty">
+                Please enter digits only
+            </div>
+        </div>
+    </div>
+
+    <div class="row margin-botton-15">
+        <div class="col-lg-4">
+            <label>Quantity</label>
+        </div>
+        <div class="col-lg-5">
+            <input type="text" class="form-control" placeholder="Enter stock item quantity" name="quantity" required="" data-ng-model="Model.StockItem.Quantity"
+                   data-ng-pattern="/^[0-9]+$/">
+            <div class="ui pointing red basic label" data-ng-show="stockitemform.quantity.$error.required && stockitemform.quantity.$dirty">
+                Please enter stock item quantity
+            </div>
+            <div class="ui pointing red basic label" data-ng-show="stockitemform.quantity.$error.pattern && stockitemform.quantity.$dirty">
+                Please enter digits only
+            </div>
+        </div>
+    </div>
+
+    <div class="row margin-botton-15">
+        <div class="col-lg-4">
+            <label>Unit Type</label>
+        </div>
+        <div class="col-lg-5">
+            <select data-ng-model="Model.StockItem.UnitType" class="form-control" name="unittype" required>
+                <option value="">-----Please select-----</option>
+                <option>Piece</option>
+                <option>Litre</option>
+            </select>
+            <div class="ui pointing red basic label" data-ng-show="stockitemform.unittype.$error.required && stockitemform.unittype.$dirty">
+                Please select unit type
+            </div>
+            <!--<input type="text" class="form-control" placeholder="Enter stock item unit type" name="stockitemname" required="" data-ng-model="Model.StockItem.UnitType">-->
+        </div>
+    </div>
+
+</div>
+
+
