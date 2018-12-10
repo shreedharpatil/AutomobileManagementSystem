@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 pool:
-  vmImage: 'VS2013-Win2013'
+  vmImage: 'VS2012-Win2012'
 
 variables:
   solution: '**/*.sln'
